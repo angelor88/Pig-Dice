@@ -36,6 +36,15 @@ $(document).ready(function() {
     player1.rollone();
     $("totalScore#round-total-1").text(player1.tempscore);
   });
+  // logic interface for hold button for player1.
+  $("button#player1-hold").click(function(event){
+    player1.hold();
+    $("#total-score-1").text(player1.totalscore);
+    // the empty() method removes all child nodes and content from the select elements
+    $("#round-total-1").empty();
+    $("#die-roll-1").empty();
+    player1.winnerCheck();
+  });
 
 
   // Shows the result for the Prayer 2.
@@ -44,6 +53,30 @@ $(document).ready(function() {
     $("#die-roll-2").text(player2.roll);
     player2.rollone();
     $("totalScore#round-total-2").text(player2.tempscore);
+  });
+  // logic interface for hold button for player 2.
+  $("button#player2-hold").click(function(event){
+    player2.hold();
+    $("#total-score-2").text(player2.totalscore);
+    // the empty() method removes all child nodes and content from the select elements
+    $("#round-total-2").empty();
+    $("#die-roll-2").empty();
+    player2.winnerCheck();
+  });
+  // Restart new game button
+  $("button#new-game").click(function(event){
+    $(".player-console").hide();
+    clearValues();
+    player1.newGame();
+    player2.newGame();
+    $("#round-total-1").empty();
+    $("#total-score-1").empty();
+    $("#die-roll-1").empty();
+    $("#round-total-2").empty();
+    $("#total-score-2").empty();
+    $("#die-roll-2").empty();
+
+    $(".start-menu").show();
   });
 
 
